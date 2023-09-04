@@ -33,18 +33,31 @@ class _CreateDataState extends State<CreateData> {
               ),
             ),
             TextField(
-              controller: _namaController,
+              controller: _kamarController,
               decoration: const InputDecoration(
                 labelText: "Kamar",
               ),
             ),
             TextField(
-              controller: _namaController,
+              controller: _hpController,
               keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
                 labelText: "Nomor Hp",
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  final String nama = _namaController.text;
+                  final String kamar = _kamarController.text;
+                  final String hp = _hpController.text;
+
+                  _penghuni.add({"nama": nama, "kamar": kamar, "hp": hp});
+                  Navigator.pop(context);
+                },
+                child: const Text('CREATE'))
           ],
         ),
       ),
