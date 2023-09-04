@@ -18,7 +18,7 @@ class _CreateDataState extends State<CreateData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create'),
+        title: const Text('Create Data'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

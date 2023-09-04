@@ -11,14 +11,21 @@ class EditData extends StatefulWidget {
 class _EditDataState extends State<EditData> {
   final CollectionReference _penghuni =
       FirebaseFirestore.instance.collection('penghuni');
+
   final TextEditingController _namaController = TextEditingController();
   final TextEditingController _kamarController = TextEditingController();
   final TextEditingController _hpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final parameter =
+        ModalRoute.of(context)!.settings.arguments as DocumentSnapshot;
+    _namaController.text = parameter['nama'];
+    _kamarController.text = parameter['kamar'];
+    _hpController.text = parameter['hp'];
+    print(parameter);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create'),
+        title: const Text('Edit Data'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -54,10 +61,12 @@ class _EditDataState extends State<EditData> {
                   final String kamar = _kamarController.text;
                   final String hp = _hpController.text;
 
-                  _penghuni.add({"nama": nama, "kamar": kamar, "hp": hp});
+                  _penghuni
+                      .doc(parameter!.id)
+                      .update({"nama": nama, "kamar": kamar, "hp": hp});
                   Navigator.pop(context);
                 },
-                child: const Text('CREATE'))
+                child: const Text('UPDATE'))
           ],
         ),
       ),

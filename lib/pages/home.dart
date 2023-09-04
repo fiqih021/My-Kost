@@ -55,13 +55,14 @@ class _HomeState extends State<Home> {
                             children: [
                               IconButton(
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('edit');
+                                    Navigator.of(context).pushNamed('edit',
+                                        arguments: documentSnapshot);
                                   },
                                   color: Colors.white,
                                   icon: const Icon(Icons.edit)),
                               IconButton(
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('delete');
+                                    _penghuni.doc(documentSnapshot.id).delete();
                                   },
                                   color: Colors.white,
                                   icon: const Icon(Icons.delete)),
