@@ -62,7 +62,7 @@ class _EditDataState extends State<EditData> {
                   final String hp = _hpController.text;
 
                   _penghuni
-                      .doc(parameter!.id)
+                      .doc(parameter.id)
                       .update({"nama": nama, "kamar": kamar, "hp": hp});
                   Navigator.pop(context);
                 },
